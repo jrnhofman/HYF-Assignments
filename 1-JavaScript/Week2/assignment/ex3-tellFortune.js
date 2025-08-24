@@ -45,13 +45,13 @@ export function tellFortune(numKids, partnerNames, locations, jobTitles) {
 }
 
 function main() {
-  const numKids = [1, 2, 3, 4];
+  const numKids = [1, 2, 3, 4, 5];
 
-  const partnerNames = ['Alice', 'Bob', 'Gamma', 'Delta'];
+  const partnerNames = ['Alice', 'Bob', 'Gamma', 'Delta', 'Epsilon'];
 
-  const locations = ['AMS', 'ROT', 'DH', 'UT'];
+  const locations = ['AMS', 'ROT', 'DH', 'UT', 'AT'];
 
-  const jobTitles = ['DE', 'SE', 'MLE', 'FE'];
+  const jobTitles = ['DE', 'SE', 'MLE', 'FE', 'MLM'];
 
   console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
   console.log(tellFortune(numKids, partnerNames, locations, jobTitles));

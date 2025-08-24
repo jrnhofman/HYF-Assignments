@@ -17,7 +17,7 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/1-J
    Use `console.log` each time to display the return value of the
    `giveCompliment` function to the console.
 -----------------------------------------------------------------------------*/
-export function giveCompliment(name = 'Jeroen') {
+export function giveCompliment(name) {
   const compliments = [
     'great',
     'awesome',
@@ -36,7 +36,7 @@ export function giveCompliment(name = 'Jeroen') {
 }
 
 function main() {
-  const myName = 'Jeroen';
+  const myName = 'Lex';
 
   console.log(giveCompliment(myName));
   console.log(giveCompliment(myName));
