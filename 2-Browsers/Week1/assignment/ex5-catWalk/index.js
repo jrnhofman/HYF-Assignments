@@ -20,8 +20,47 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/2-B
 
    https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif
 -----------------------------------------------------------------------------*/
+const cat = document.querySelector('img');
+cat.style.left = '0px';
+
+let IS_DANCING = false;
+let HAS_DANCED_ALREADY = false;
+
 function catWalk() {
-  // TODO complete this function
+  let newLeft = parseInt(cat.style.left);
+  if (!IS_DANCING) {
+    newLeft += 10;
+    cat.style.left = newLeft + 'px';
+  }
+
+  // Get screen width to check for screen edges and midpoint
+  const screenWidth = window.innerWidth;
+
+  // Cat reaches the right side, so restart the walk at the left side
+  if (newLeft > screenWidth) {
+    cat.style.left = '0px';
+    HAS_DANCED_ALREADY = false;
+    newLeft = 0;
+  }
+
+  // Cat reaches the middle of the screen
+  const middle = screenWidth / 2;
+
+  // Check if the cat is at the midpoint and isn't already dancing
+  if (newLeft + cat.width / 2 >= middle && !IS_DANCING && !HAS_DANCED_ALREADY) {
+    IS_DANCING = true;
+    HAS_DANCED_ALREADY = true;
+    cat.src =
+      'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif';
+
+    // After 5 seconds, switch back to the original image and continue walking
+    setTimeout(() => {
+      cat.src = 'http://www.anniemation.com/clip_art/images/cat-walk.gif';
+      IS_DANCING = false;
+    }, 5000); // 5000 milliseconds = 5 seconds
+  }
 }
 
-// TODO execute `catWalk` when the browser has completed loading the page
+window.onload = () => {
+  setInterval(catWalk, 50);
+};
