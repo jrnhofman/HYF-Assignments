@@ -16,17 +16,18 @@ import { rollDie } from '../../helpers/pokerDiceRoller.js';
 
 export function rollDice() {
   const results = [];
+  const dice = [1, 2, 3, 4, 5];
 
-  // TODO: expand the chain to include five dice
-  return rollDie(1)
-    .then((value) => {
-      results.push(value);
-      return rollDie(2);
-    })
-    .then((value) => {
-      results.push(value);
-      return results;
-    });
+  // Build a tidy promise chain that rolls sequentially
+  return dice
+    .reduce((chain, die) => {
+      return chain
+        .then(() => rollDie(die))
+        .then((value) => {
+          results.push(value);
+        });
+    }, Promise.resolve())
+    .then(() => results);
 }
 
 function main() {
